@@ -834,8 +834,7 @@ main {
 	position: relative;
 }
 
-
-/* For not opening javascript window */
+/* First Element with external Link BEGIN*/
 .menu__item2 {
 	color: var(--color-menu);
 	line-height: 1.1;
@@ -862,7 +861,7 @@ main {
 	content: '';
 	width: 40%;
 	height: 10px;
-	background: linear-gradient(45deg, #f19872, #e86c9a);
+	background: linear-gradient(45deg, #f19d00, #e86c9a);
 	position: absolute;
 	left: 0;
 	bottom: 0;
@@ -870,11 +869,11 @@ main {
 	transform: scale3d(0,1,1);
 }
 .menu__item2:nth-child(1)::before {
-	background: linear-gradient(45deg, #0947db, #07d89d);
+	background: linear-gradient(45deg, #ee2d29, #f8ae2c);
 }
 
 .menu__item2:nth-child(3)::before {
-	background: linear-gradient(45deg, #ee2d29, #f8ae2c);
+	background: linear-gradient(45deg, #3a3d98, #6f22b9);
 }
 
 .menu__item2:nth-child(4)::before {
@@ -898,7 +897,72 @@ main {
 	display: block;
 	position: relative;
 }
-/* End for javascipt */
+/* First Element with external Link END*/
+
+/* Second Element with external Link BEGIN*/
+.menu__item3 {
+	color: var(--color-menu);
+	line-height: 1.1;
+	text-transform: lowercase;
+	letter-spacing: -0.025em;
+	text-indent: -0.025em;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	position: relative;
+	padding:0;
+	margin: 12px 0;
+}
+.menu__item3:hover,
+.menu__item3:focus {
+	color: var(--color-menu-hover);
+}
+
+.menu__item3::before {
+	content: '';
+	width: 40%;
+	height: 10px;
+	background: linear-gradient(45deg, #f19d00, #e86c9a);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	transform-origin: 0 0;
+	transform: scale3d(0,1,1);
+}
+.menu__item3:nth-child(1)::before {
+	background: linear-gradient(45deg, #ee2d29, #f8ae2c);
+}
+
+.menu__item3:nth-child(3)::before {
+	background: linear-gradient(45deg, #3a3d98, #6f22b9);
+}
+
+.menu__item3:nth-child(4)::before {
+	background: linear-gradient(45deg, #3a3d98, #6f22b9);
+}
+
+.menu__item3:nth-child(5)::before {
+	background: linear-gradient(45deg, #9d316e, #de2d3e);
+}
+.menu__item3--showDeco:hover::before {
+    transition: transform 0.8s cubic-bezier(0.2,1,0.3,1);
+    transform: scale3d(2.5,1,1);
+}
+.menu__item3--showDeco::before {
+    transition: transform 0.8s cubic-bezier(0.2,1,0.3,1);
+    transform: scale3d(1,1,1);
+}
+
+
+.menu__item3 span {
+	display: block;
+	position: relative;
+}
+/* Second Element with external Link END*/
 .event-time {
 	position: absolute;
 	z-index: 2;
