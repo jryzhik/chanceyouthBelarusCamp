@@ -171,7 +171,7 @@
                 link.classList.remove('menu__item3--showDeco');
             })
         });
-        window.open("https://photos.app.goo.gl/uBaTpTrcjQo3RwBKA/","_self")
+        window.open("https://donate.chanceyouth.org","_self")
 
         current = pos;
         const currentBlob = blobs[current];
