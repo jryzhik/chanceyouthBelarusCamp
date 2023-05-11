@@ -87,7 +87,7 @@
 		//Countdown
 		
         $('.countdown').downCount({
-            date: '06/30/2023 17:00:00'
+            date: '06/29/2023 17:00:00'
         }, function () {
             alert('WOOT WOOT, done!');
         });
