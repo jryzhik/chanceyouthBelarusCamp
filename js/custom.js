@@ -1,5 +1,4 @@
 (function($) { "use strict";
-	
 	//Preloader
 	
 	$(window).on('load', function(e) { // makes sure the whole site is loaded
