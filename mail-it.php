@@ -3,8 +3,8 @@
 /* Code by David McKeown - craftedbydavid.com */
 /* Editable entries are bellow */
 
-$send_to = "mail@server.com";
-$send_subject = "Ajax form ";
+$send_to = "info@chanceyouth.org";
+$send_subject = "RETREAT QUESTION";
 
 
 

@@ -1,19 +1,19 @@
 /*! gradient animation*/
 {
     // From https://davidwalsh.name/javascript-debounce-function.
-	function debounce(func, wait, immediate) {
-		var timeout;
-		return function() {
-			var context = this, args = arguments;
-			var later = function() {
-				timeout = null;
-				if (!immediate) func.apply(context, args);
-			};
-			var callNow = immediate && !timeout;
-			clearTimeout(timeout);
-			timeout = setTimeout(later, wait);
-			if (callNow) func.apply(context, args);
-		};
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function () {
+            var context = this, args = arguments;
+            var later = function () {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
     };
 
     class Blob {
@@ -28,7 +28,7 @@
             this.rect = this.DOM.el.getBoundingClientRect();
             this.descriptions = [];
             this.layers = Array.from(this.DOM.el.querySelectorAll('path'), t => {
-                t.style.transformOrigin = `${this.rect.left + this.rect.width/2}px ${this.rect.top + this.rect.height/2}px`;
+                t.style.transformOrigin = `${this.rect.left + this.rect.width / 2}px ${this.rect.top + this.rect.height / 2}px`;
                 t.style.opacity = 0;
                 this.descriptions.push(t.getAttribute('d'));
                 return t;
@@ -36,7 +36,7 @@
 
             window.addEventListener('resize', debounce(() => {
                 this.rect = this.DOM.el.getBoundingClientRect();
-                this.layers.forEach(layer => layer.style.transformOrigin = `${this.rect.left + this.rect.width/2}px ${this.rect.top + this.rect.height/2}px`);
+                this.layers.forEach(layer => layer.style.transformOrigin = `${this.rect.left + this.rect.width / 2}px ${this.rect.top + this.rect.height / 2}px`);
             }, 20));
         }
         intro() {
@@ -44,13 +44,13 @@
             anime({
                 targets: this.layers,
                 duration: 1800,
-                delay: (t,i) => i*120,
-                easing: [0.2,1,0.1,1],
-                scale: [0.2,1],
+                delay: (t, i) => i * 120,
+                easing: [0.2, 1, 0.1, 1],
+                scale: [0.2, 1],
                 opacity: {
-                    value: [0,1],
+                    value: [0, 1],
                     duration: 300,
-                    delay: (t,i) => i*120,
+                    delay: (t, i) => i * 120,
                     easing: 'linear'
                 }
             });
@@ -61,11 +61,11 @@
                 anime({
                     targets: this.layers,
                     duration: 1000,
-                    delay: (t,i) => i*50 + 200,
-                    easing: [0.8,0,0.1,0],
+                    delay: (t, i) => i * 50 + 200,
+                    easing: [0.8, 0, 0.1, 0],
                     d: (t) => t.getAttribute('class'),
-                    update: function(anim) {
-                        if ( anim.progress > 75 && !halfway ) {
+                    update: function (anim) {
+                        if (anim.progress > 75 && !halfway) {
                             halfway = true;
                             resolve();
                         }
@@ -79,11 +79,11 @@
                 anime({
                     targets: this.layers,
                     duration: 800,
-                    delay: (t,i,total) => (total-i-1)*50 + 400,
-                    easing: [0.2,1,0.1,1],
-                    d: (t,i) => this.descriptions[i],
-                    update: function(anim) {
-                        if ( anim.progress > 75 && !halfway ) {
+                    delay: (t, i, total) => (total - i - 1) * 50 + 400,
+                    easing: [0.2, 1, 0.1, 1],
+                    d: (t, i) => this.descriptions[i],
+                    update: function (anim) {
+                        if (anim.progress > 75 && !halfway) {
                             halfway = true;
                             resolve();
                         }
@@ -96,13 +96,13 @@
             anime({
                 targets: this.layers,
                 duration: 800,
-                delay: (t,i,total) => (total-i-1)*80,
+                delay: (t, i, total) => (total - i - 1) * 80,
                 easing: 'easeInOutExpo',
                 scale: 0,
                 opacity: {
                     value: 0,
                     duration: 500,
-                    delay: (t,i,total) => (total-i-1)*80,
+                    delay: (t, i, total) => (total - i - 1) * 80,
                     easing: 'linear'
                 }
             });
@@ -122,15 +122,15 @@
         blobs.push(blob);
         blob.intro();
     });
-    
+
     DOM.content = document.querySelector('.content--reveal');
     DOM.contentInner = Array.from(DOM.content.querySelectorAll('.content__inner'), (el) => {
         charming(el);
         return el;
     });
     DOM.ctrlBack = DOM.content.querySelector('.content__close');
-    DOM.links = Array.from(document.querySelectorAll('.menu > .menu__item'));
-    
+    DOM.links = Array.from(document.querySelectorAll('.menu > .menu__itemr'));
+
     DOM.links.forEach((link, pos) => {
         link.style.pointerEvents = 'none';
         charming(link);
@@ -138,12 +138,12 @@
         anime({
             targets: link.querySelectorAll('span'),
             duration: 800,
-            delay: (t,i) => anime.random(0,600)+500,
+            delay: (t, i) => anime.random(0, 600) + 500,
             easing: 'easeInOutQuad',
-            opacity: [0,1],
+            opacity: [0, 1],
             complete: () => {
                 link.style.pointerEvents = 'auto';
-                link.classList.add('menu__item--showDeco');
+                link.classList.add('menu__itemr--showDeco');
             }
         });
 
@@ -160,19 +160,22 @@
         this.isOpen = true;
         anime({
             targets: DOM.links.map((link) => link.querySelectorAll('span')),
-            delay: (t,i) => anime.random(0,300),
+            delay: (t, i) => anime.random(0, 300),
             duration: 200,
             easing: 'easeInOutQuad',
             opacity: 0,
             begin: () => DOM.links.forEach(link => {
                 link.style.pointerEvents = 'none';
-                link.classList.remove('menu__item--showDeco');
+                link.classList.remove('menu__itemr--showDeco');
             })
         });
 
         current = pos;
         const currentBlob = blobs[current];
+        // Inside the open function
         currentBlob.expand().then(() => {
+            DOM.content.style.pointerEvents = 'auto';
+            DOM.svg.style.display = 'block';
             DOM.content.style.pointerEvents = 'auto';
 
             const contentInner = DOM.contentInner[pos];
@@ -180,9 +183,9 @@
             anime({
                 targets: [contentInner.querySelectorAll('.content__title > span'), contentInner.querySelectorAll('.content__subtitle > span'), DOM.ctrlBack],
                 duration: 200,
-                delay: (t,i) => anime.random(0,600),
+                delay: (t, i) => anime.random(0, 600),
                 easing: 'easeInOutQuad',
-                opacity: [0,1]
+                opacity: [0, 1]
             });
         });
 
@@ -190,13 +193,13 @@
     };
 
     const close = () => {
-        if ( !this.isOpen ) return;
+        if (!this.isOpen) return;
         this.isOpen = false;
-        
+
         const contentInner = DOM.contentInner[current];
         anime({
             targets: [contentInner.querySelectorAll('.content__title > span'), contentInner.querySelectorAll('.content__subtitle > span'), DOM.ctrlBack],
-            delay: (t,i) => anime.random(0,300),
+            delay: (t, i) => anime.random(0, 300),
             duration: 200,
             easing: 'easeInOutQuad',
             opacity: 0,
@@ -207,17 +210,18 @@
         });
 
         blobs[current].collapse().then(() => {
+            DOM.svg.style.display = 'none';
             current = -1;
 
             anime({
                 targets: DOM.links.map((link) => link.querySelectorAll('span')),
                 duration: 200,
-                delay: (t,i) => anime.random(0,600),
+                delay: (t, i) => anime.random(0, 600),
                 easing: 'easeInOutQuad',
                 opacity: 1,
                 complete: () => DOM.links.forEach(link => {
                     link.style.pointerEvents = 'auto';
-                    link.classList.add('menu__item--showDeco');
+                    link.classList.add('menu__itemr--showDeco');
                 })
             });
         });
@@ -226,32 +230,32 @@
 };
 
 {
-	setTimeout(() => document.body.classList.add('render'), 60);
-	const navdemos = Array.from(document.querySelectorAll('nav.demos > .demo'));
-	const total = navdemos.length;
-	const current = navdemos.findIndex(el => el.classList.contains('demo--current'));
-	const navigate = (linkEl) => {
-		document.body.classList.remove('render');
-		document.body.addEventListener('transitionend', () => window.location = linkEl.href);
-	};
-	navdemos.forEach(link => link.addEventListener('click', (ev) => {
-		ev.preventDefault();
-		navigate(ev.target);
-	}));
-	document.addEventListener('keydown', (ev) => {
-		const keyCode = ev.keyCode || ev.which;
-		let linkEl;
-		if ( keyCode === 37 ) {
-			linkEl = current > 0 ? navdemos[current-1] : navdemos[total-1];
-		}
-		else if ( keyCode === 39 ) {
-			linkEl = current < total-1 ? navdemos[current+1] : navdemos[0];
-		}
-		else {
-			return false;
-		}
-		navigate(linkEl);
-	});
+    setTimeout(() => document.body.classList.add('render'), 60);
+    const navdemos = Array.from(document.querySelectorAll('nav.demos > .demo'));
+    const total = navdemos.length;
+    const current = navdemos.findIndex(el => el.classList.contains('demo--current'));
+    const navigate = (linkEl) => {
+        document.body.classList.remove('render');
+        document.body.addEventListener('transitionend', () => window.location = linkEl.href);
+    };
+    navdemos.forEach(link => link.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        navigate(ev.target);
+    }));
+    document.addEventListener('keydown', (ev) => {
+        const keyCode = ev.keyCode || ev.which;
+        let linkEl;
+        if (keyCode === 37) {
+            linkEl = current > 0 ? navdemos[current - 1] : navdemos[total - 1];
+        }
+        else if (keyCode === 39) {
+            linkEl = current < total - 1 ? navdemos[current + 1] : navdemos[0];
+        }
+        else {
+            return false;
+        }
+        navigate(linkEl);
+    });
 }
 
 

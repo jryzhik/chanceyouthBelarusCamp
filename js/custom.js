@@ -1,4 +1,5 @@
 (function($) { "use strict";
+	
 	//Preloader
 	
 	$(window).on('load', function(e) { // makes sure the whole site is loaded
@@ -86,9 +87,9 @@
 		//Countdown
 		
         $('.countdown').downCount({
-            date: '06/29/2023 17:00:00'
+            date: '06/27/2024 18:00:00'
         }, function () {
-            alert('WOOT WOOT, done!');
+            console.log("It's coming")
         });
 
 		
