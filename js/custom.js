@@ -87,7 +87,7 @@
 		//Countdown
 		
         $('.countdown').downCount({
-            date: '06/27/2024 18:00:00'
+            date: '06/26/2025 18:00:00'
         }, function () {
             console.log("It's coming")
         });
